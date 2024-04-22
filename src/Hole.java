@@ -15,7 +15,7 @@ public class Hole extends JPanel implements DropTargetListener {
     public void setColor(Color color) {
         currentColor = color;
         this.repaint();
-    }
+    } 
 
     // DropTargetListener methods
     @Override
