@@ -3,11 +3,22 @@ import java.awt.*;
 import java.awt.datatransfer.Transferable;
 import java.awt.dnd.*;
 
-public class Hole extends JPanel implements DropTargetListener {
+public class Hole extends JPanel implements GameElement, DropTargetListener {
+    // instance variables
     private Color currentColor = new Color(0, 0, 0, 0);
     private int row, col;
     private Algorithims game;
 
+    /**
+     * Constructor for the Hole class - sets the row, column, and game
+     * Sets the preferred size of the hole to 30x30 pixels and the background to transparent with a light background if active
+     * It only enables dropping if the row is active (1)
+     * @param row
+     * @param col
+     * @param game
+     * @return void
+     * @author Rishit
+     */
     public Hole(int row, int col, Algorithims game){
         this.row = row;
         this.col = col;
@@ -19,6 +30,14 @@ public class Hole extends JPanel implements DropTargetListener {
         }
     }
 
+    /**
+     * Set the active state of the hole
+     * Sets the background to a light background if active and enables dropping
+     * Sets the background to transparent if inactive and disables dropping
+     * @param isActive the state to set the hole to
+     * @return void
+     * @author Rishit
+     */
     public void setActive(boolean isActive) {
         if (isActive) {
             setBackground(new Color(0, 0, 0, 75)); 
@@ -31,12 +50,41 @@ public class Hole extends JPanel implements DropTargetListener {
         }
     }
 
-    public void setColor(Color color, Algorithims game) {
+    /**
+     * Set the color of the hole
+     * Sets the current color to the color and repaints the hole
+     * Sets the color of the hole in the game
+     * @param color the color to set the hole to
+     * @return void
+     * @author Rishit
+     */
+    @Override
+    public void setColor(Color color) {
         currentColor = color;
         this.repaint();
         game.setColor(row, col, colorToNum(color));
     } 
 
+    /**
+     * Clears the color of the hole
+     * Sets the color to transparent and repaints the hole
+     * Clears the color of the hole in the game
+     * @param void
+     * @return void
+     * @author Rishit
+     */
+    @Override
+    public void clear() {
+        setColor(new Color(0, 0, 0, 0));  // reset color to transparent
+    }
+
+    /**
+     * Converts a color to a number
+     * Returns 1 for green, 2 for red, 3 for blue, 4 for yellow, 5 for white, 6 for black, and 0 for transparent
+     * @param color the color to convert to a number
+     * @return int the number corresponding to the color
+     * @author Rishit
+     */
     private int colorToNum(Color color) {
         if (color.equals(Color.GREEN)) {
             return 1;
@@ -56,6 +104,13 @@ public class Hole extends JPanel implements DropTargetListener {
     }
 
     // DropTargetListener methods
+
+    /**
+     * Accepts the drag if the data flavor is supported
+     * @param dtde the drop target drag event
+     * @return void
+     * @author Rishit
+     */
     @Override
     public void dragEnter(DropTargetDragEvent dtde) {
         if (dtde.isDataFlavorSupported(Peg.PEG_FLAVOR)) {
@@ -65,27 +120,52 @@ public class Hole extends JPanel implements DropTargetListener {
         }
     }
 
+    /**
+     * Supports the drag over for drag/drop functionality
+     * @param dtde the drop target drag event
+     * @return void
+     * @author Rishit
+     */
     @Override
     public void dragOver(DropTargetDragEvent dtde) {}
 
+    /**
+     * Supports the drop action changed for drag/drop functionality
+     * @param dtde the drop target drag event
+     * @return void
+     * @author Rishit
+     */
     @Override
     public void dropActionChanged(DropTargetDragEvent dtde) {}
 
+    /**
+     * Supports the drag exit for drag/drop functionality
+     * @param dte the drop target event
+     * @return void
+     * @author Rishit
+     */
     @Override
     public void dragExit(DropTargetEvent dte) {}
 
+    /**
+     * Drops the peg into the hole if supported, modifying the color of the hole and repainting the board
+     * @param dtde the drop target drop event
+     * @return void
+     * @throws Exception
+     * @author Rishit
+     */
     @Override
     public void drop(DropTargetDropEvent dtde) {
         try {
             Transferable transferable = dtde.getTransferable();
             if (dtde.isDataFlavorSupported(Peg.PEG_FLAVOR)) {
                 Peg peg = (Peg) transferable.getTransferData(Peg.PEG_FLAVOR);
-                setColor(peg.getPegColor(), game);
+                setColor(peg.getPegColor());
                 dtde.acceptDrop(DnDConstants.ACTION_COPY);
                 dtde.dropComplete(true);
                 this.getParent().repaint(); // repaints the entire board to remove errors related to dragging
-                // print the row of the hole that just got colored
-                System.out.println("Row: " + row);
+                // print the row of the hole that just got colored for testing
+                // System.out.println("Row: " + row);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,6 +173,14 @@ public class Hole extends JPanel implements DropTargetListener {
         }
     }
 
+    /**
+     * Paints the hole on the panel, overriding the paintComponent method
+     * Sets the rendering hint to make the peg edge smoother using anti-aliasing
+     * Fills the hole with the current color
+     * @param g the graphics object to paint the hole
+     * @return void
+     * @author Rishit
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -104,6 +192,12 @@ public class Hole extends JPanel implements DropTargetListener {
         }
     }
 
+    /**
+     * Get the row of the hole
+     * @param void
+     * @return int the row of the hole
+     * @author Rishit
+     */
     public int getRow() {
         return row;
     }

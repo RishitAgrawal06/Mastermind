@@ -5,11 +5,22 @@ import java.awt.dnd.*;
 import java.awt.image.BufferedImage;
 
 public class Peg extends JComponent implements DragGestureListener, DragSourceListener, Transferable {
+    // instance variables
+    // drag and drop variables
     static final DataFlavor PEG_FLAVOR = new DataFlavor(Peg.class, "Peg Object");
     private static final DataFlavor[] SUPPORTED_FLAVORS = {PEG_FLAVOR};
     private final Color color;
     private final DragSource dragSource;
     
+    /**
+     * Constructor for the Peg class
+     * Sets the color of the peg and the preferred size of the peg to 30x30 pixels
+     * Sets the background of the peg to the color
+     * Creates a drag source for the peg
+     * @param color the color of the peg
+     * @return void
+     * @author Rishit
+     */
     public Peg(Color color) {
         this.color = color;
         this.setPreferredSize(new Dimension(30, 30));
@@ -19,21 +30,46 @@ public class Peg extends JComponent implements DragGestureListener, DragSourceLi
         dragSource.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, this);
     }
 
+    /**
+     * Gets the color of the peg
+     * @param void
+     * @return the color of the peg
+     * @author Rishit
+     */
     public Color getPegColor() {
         return color;
     }
 
     // transferable methods for drag and drop between Peg and Hole for UI accessibility
+    /**
+     * Gets the supported data flavors for the peg
+     * @param void
+     * @return the supported data flavors for the peg
+     * @author Rishit
+     */
     @Override
     public DataFlavor[] getTransferDataFlavors() {
         return SUPPORTED_FLAVORS;
     }
 
+    /**
+     * Checks if the data flavor is supported
+     * @param flavor the data flavor to check
+     * @return true if the data flavor is supported, false otherwise
+     * @author Rishit
+     */
     @Override
     public boolean isDataFlavorSupported(DataFlavor flavor) {
         return flavor.equals(PEG_FLAVOR);
     }
 
+    /**
+     * Gets the transfer data for the peg
+     * @param flavor the data flavor to get the transfer data for
+     * @return the transfer data for the peg
+     * @throws UnsupportedFlavorException
+     * @author Rishit
+     */
     @Override
     public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException {
         if (flavor.equals(PEG_FLAVOR)) {
@@ -43,6 +79,13 @@ public class Peg extends JComponent implements DragGestureListener, DragSourceLi
         }
     }
 
+    /**
+     * Handles the drag gesture recognized event for the peg
+     * Sets the mannerism for dragging the pegs using the cursor and its relative position
+     * @param dge the drag gesture event
+     * @return void
+     * @author Rishit
+     */
     @Override
     public void dragGestureRecognized(DragGestureEvent dge) {
         // dragSource.startDrag(dge, DragSource.DefaultCopyDrop, this, this);
@@ -55,21 +98,57 @@ public class Peg extends JComponent implements DragGestureListener, DragSourceLi
     }
 
     // DragSourceListener methods
+    /**
+     * Supports the drag enter for drag/drop functionality
+     * @param dsde the drag source drag event
+     * @return void
+     * @author Rishit
+     */
     @Override
     public void dragEnter(DragSourceDragEvent dsde) {}
 
+    /**
+     * Supports the drag over for drag/drop functionality
+     * @param dsde the drag source drag event
+     * @return void
+     * @author Rishit
+     */
     @Override
     public void dragOver(DragSourceDragEvent dsde) {}
 
+    /**
+     * Supports the drop action changed for drag/drop functionality
+     * @param dsde the drag source drag event
+     * @return void
+     * @author Rishit
+     */
     @Override
     public void dropActionChanged(DragSourceDragEvent dsde) {}
 
+    /**
+     * Supports the drag exit for drag/drop functionality
+     * @param dse the drag source event
+     * @return void
+     * @author Rishit
+     */
     @Override
     public void dragExit(DragSourceEvent dse) {}
 
+    /**
+     * Supports the drag drop end for drag/drop functionality
+     * @param dsde the drag source drop event
+     * @return void
+     * @author Rishit
+     */
     @Override
     public void dragDropEnd(DragSourceDropEvent dsde) {}
 
+    /**
+     * Paints the peg on the panel, overriding the paintComponent method
+     * @param g the graphics object to paint the peg
+     * @return void
+     * @author Rishit
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

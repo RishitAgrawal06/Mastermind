@@ -1,6 +1,15 @@
+// UNUSED FILE
+// This file is not used in the final version of the project. It was used to test the Algorithims class and its methods.
+
 import java.util.Scanner;
 import java.util.*;
 public class AlgoritihmRunner {
+    /**
+     * Main method to test the Algorithims class
+     * Creates a new Algorithims object and tests the methods
+     * @param args
+     * @author Ethan
+     */
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         Algorithims game = new Algorithims();
