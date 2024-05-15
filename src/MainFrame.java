@@ -136,12 +136,14 @@ public class MainFrame extends JFrame {
         // print the actual key
         System.out.println("Key: " + Arrays.toString(game.getKey()));
         int[] feedback = new int[2];
-        for (int i = 0; i < hints.length; i++) {
+        int i = 0;
+        while (i < hints.length) {
             if (hints[i] == 2) {
                 feedback[0]++;
             } else if (hints[i] == 1) {
                 feedback[1]++;
             }
+            i++;
         }
         return feedback;
     }

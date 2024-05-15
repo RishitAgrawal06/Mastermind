@@ -232,7 +232,11 @@ public class Algorithims {
         sortedGuesses.add("Guess: 1-Green, 2-Red, 3-Blue,\n             4-Yellow, 5-White, 6-Black\nFeedback: 2-Black, 1-White. 0-Incorrect\n--------------------------------------");
         // add the sorted guesses to the list
         for (int i = 0; i < rows; i++) {
-            sortedGuesses.add("Row #" + feedbackSums[i][0] + ": " + Arrays.toString(guesses[feedbackSums[i][0]]) + " →→ " + Arrays.toString(hints[feedbackSums[i][0]]));
+            String guess = Arrays.toString(guesses[feedbackSums[i][0]]);
+            String hint = Arrays.toString(hints[feedbackSums[i][0]]);
+            guess = guess.substring(1, guess.length()-1);
+            hint = hint.substring(1, hint.length()-1);
+            sortedGuesses.add("Row #" + feedbackSums[i][0] + ": " + guess + " →→ " + hint);
         }
         return sortedGuesses;
 
