@@ -9,7 +9,7 @@ public class FeedbackPeg extends JPanel implements GameElement {
      * Sets the pegs to be initially transparent
      * @param none
      * @return void
-     * @author Rishit
+     * @author Shaunak
      */
     public FeedbackPeg() {
         setOpaque(true);
@@ -21,7 +21,7 @@ public class FeedbackPeg extends JPanel implements GameElement {
      * Sets the color of the feedback peg
      * @param color the color to set the feedback peg to
      * @return void
-     * @author Rishit
+     * @author Shaunak
      */
     @Override
     public void setColor(Color color) {
@@ -32,7 +32,7 @@ public class FeedbackPeg extends JPanel implements GameElement {
      * Clears the color of the feedback peg
      * @param void
      * @return void
-     * @author Rishit
+     * @author Shaunak
      */
     @Override
     public void clear() {

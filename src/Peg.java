@@ -34,7 +34,7 @@ public class Peg extends JComponent implements DragGestureListener, DragSourceLi
      * Gets the color of the peg
      * @param void
      * @return the color of the peg
-     * @author Rishit
+     * @author Roshni
      */
     public Color getPegColor() {
         return color;

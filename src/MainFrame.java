@@ -128,7 +128,7 @@ public class MainFrame extends JFrame {
      * Prints the feedback for the current row and the actual key in the terminal for debugging
      * @param hints the hints given by the game for the current row
      * @return int[] the feedback array containing the counts of black and white pegs
-     * @author Rishit
+     * @author Ethan
      */
     private int[] updateFeedback(int[] hints) {
         // placeholder for feedback update logic
@@ -150,7 +150,7 @@ public class MainFrame extends JFrame {
      * Checks if the game is over based on the feedback for all 4 pegs being black
      * @param feedback the feedback array containing the counts of black and white pegs
      * @return boolean true if the game is over, false otherwise
-     * @author Rishit
+     * @author Roshni
      */
     private boolean isGameOver(int[] feedback) {
         return feedback[0] == 4;
@@ -161,7 +161,7 @@ public class MainFrame extends JFrame {
      * Adds the pegs to the peg palette panel
      * @param void
      * @return void
-     * author Rishit
+     * author Siddh
      */
     private void initializePegPalette() {
         Color[] colors = new Color[]{Color.GREEN, Color.RED, Color.BLUE, Color.YELLOW, Color.WHITE, Color.BLACK};
@@ -175,7 +175,7 @@ public class MainFrame extends JFrame {
      * Sets the instructions for the game in the sorted guesses area
      * @param void
      * @return void
-     * @author Rishit
+     * @author Shaunak
      */
     public void setInstructions(){
         sortedGuessesArea.setLineWrap(true);

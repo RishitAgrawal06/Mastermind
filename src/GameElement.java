@@ -5,7 +5,7 @@ public interface GameElement {
      * Sets the color of the game element
      * @param color
      * @return void
-     * @author Rishit
+     * @author Roshni
      */
     void setColor(Color color);
 
@@ -13,7 +13,7 @@ public interface GameElement {
      * Clears the color of the game element
      * @param void
      * @return void
-     * @author Rishit
+     * @author Roshni
      */
     void clear();
 }

@@ -49,7 +49,7 @@ public class GameBoard extends JPanel {
      * Paints the board image on the panel, overriding the paintComponent method
      * @param g the graphics object to paint the board image
      * @return void
-     * @author Rishit
+     * @author Siddh
      */
     @Override
     protected void paintComponent(Graphics g) {
@@ -62,7 +62,7 @@ public class GameBoard extends JPanel {
      * Calculate the x-coordinate for the peg in the given column
      * @param col
      * @return int the x-coordinate for the peg in the given column
-     * @author Rishit
+     * @author Shaunak
      */
     private int calculateXPositionForPeg(int col) {
         return startX + col * holeSpacingX;
@@ -72,7 +72,7 @@ public class GameBoard extends JPanel {
      * Calculate the y-coordinate for the row
      * @param row
      * @return int the y-coordinate for the row
-     * @author Rishit
+     * @author Shaunak
      */
     private int calculateYPositionForRow(int row) {
         return startY + row * holeSpacingY;
@@ -160,7 +160,7 @@ public class GameBoard extends JPanel {
      * @param row the row to update the feedback pegs for
      * @param feedback the feedback array containing counts of black and white pegs
      * @return void
-     * @author Rishit
+     * @author Siddh
      */
     public static void updateFeedbackPegs(int row, int[] feedback) {
         // feedback array contains counts of black and white pegs

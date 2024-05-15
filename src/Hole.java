@@ -56,7 +56,7 @@ public class Hole extends JPanel implements GameElement, DropTargetListener {
      * Sets the color of the hole in the game
      * @param color the color to set the hole to
      * @return void
-     * @author Rishit
+     * @author Roshni
      */
     @Override
     public void setColor(Color color) {
@@ -71,7 +71,7 @@ public class Hole extends JPanel implements GameElement, DropTargetListener {
      * Clears the color of the hole in the game
      * @param void
      * @return void
-     * @author Rishit
+     * @author Roshni
      */
     @Override
     public void clear() {
@@ -83,7 +83,7 @@ public class Hole extends JPanel implements GameElement, DropTargetListener {
      * Returns 1 for green, 2 for red, 3 for blue, 4 for yellow, 5 for white, 6 for black, and 0 for transparent
      * @param color the color to convert to a number
      * @return int the number corresponding to the color
-     * @author Rishit
+     * @author Siddh
      */
     private int colorToNum(Color color) {
         if (color.equals(Color.GREEN)) {
@@ -196,7 +196,7 @@ public class Hole extends JPanel implements GameElement, DropTargetListener {
      * Get the row of the hole
      * @param void
      * @return int the row of the hole
-     * @author Rishit
+     * @author Ethan
      */
     public int getRow() {
         return row;
